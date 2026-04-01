@@ -1,20 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const carlBrown = localFont({
+  src: "../../public/fonts/CarlBrown.woff2",
+  variable: "--font-carl-brown",
+  display: "swap",
+  weight: "300",
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  title: "Cube Studio",
+  description:
+    "We create immersive floral design for weddings, brand events, and personal moments. Each project is shaped with intention to turn space into a story — felt deeply, remembered clearly, and never quite forgotten.",
+  openGraph: {
+    title: "Cube Studio",
+    description:
+      "We create immersive floral design for weddings, brand events, and personal moments.",
+    images: [{ url: "/seo/og-image.png" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cube Studio",
+    description:
+      "We create immersive floral design for weddings, brand events, and personal moments.",
+    images: ["/seo/og-image.png"],
+  },
+  icons: {
+    icon: "/seo/favicon.png",
+    apple: "/seo/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -23,11 +39,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${carlBrown.variable} dark`}>
+      <body className="min-h-screen bg-black text-white antialiased">
+        {children}
+      </body>
     </html>
   );
 }
