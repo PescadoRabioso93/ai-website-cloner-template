@@ -173,7 +173,7 @@ export function HeroSection() {
         <div className="hero-bg-image absolute inset-0">
           <Image
             src="/images/hero-image.webp"
-            alt="Cube Studio hero — surreal landscape with reflective cube"
+            alt="Dr. Paruzzo — Donde convergen cuerpo, mente y tecnología"
             fill
             priority
             className="object-cover object-center"
@@ -206,8 +206,8 @@ export function HeroSection() {
               textTransform: "uppercase",
             }}
           >
-            <span className="block">cube</span>
-            <span className="block">studio</span>
+            <span className="block">Dr.</span>
+            <span className="block">Paruzzo</span>
           </h1>
         </div>
 
@@ -335,7 +335,7 @@ export function HeroSection() {
               letterSpacing: "-0.03em",
             }}
           >
-            DESIGN THAT BLOOMS INTO EMOTION
+            DONDE CONVERGEN CUERPO MENTE Y TECNOLOGÍA
           </h2>
 
           {/* Horizontal rule + star */}
@@ -350,10 +350,10 @@ export function HeroSection() {
             className="text-small mx-auto mt-10 max-w-[620px] text-center uppercase tracking-[0.05em] text-white/70"
             style={{ lineHeight: 1.9, fontSize: "11px" }}
           >
-            We create immersive floral design for weddings, brand events, and
-            personal moments. Each project is shaped with intention to turn space
-            into a story — felt deeply, remembered clearly, and never quite
-            forgotten.
+            Médico, psicólogo y explorador de inteligencia artificial.
+            Creo contenido, herramientas y experiencias que conectan
+            la salud, la mente y la tecnología — para profesionales
+            y para todos los que buscan entender el futuro.
           </p>
 
           {/* Vertical line + CTA Button */}
@@ -363,7 +363,7 @@ export function HeroSection() {
               href="#services"
               className="text-small mt-4 inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-3 text-[11px] uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(100,150,255,0.1)]"
             >
-              Our Services
+              Explorar
             </a>
           </div>
         </div>

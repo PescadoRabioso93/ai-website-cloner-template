@@ -16,14 +16,14 @@ import "swiper/css/effect-coverflow";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { name: "Project-8", image: "/images/project-8.webp", year: "2024" },
-  { name: "Project 1", image: "/images/project-1.webp", year: "2024" },
-  { name: "Project 2", image: "/images/project-2.webp", year: "2024" },
-  { name: "Project 3", image: "/images/project-3.webp", year: "2024" },
-  { name: "Project 4", image: "/images/project-4.webp", year: "2024" },
-  { name: "Project 5", image: "/images/project-5.webp", year: "2024" },
-  { name: "Project 6", image: "/images/project-6.webp", year: "2024" },
-  { name: "Project 7", image: "/images/project-7.webp", year: "2024" },
+  { name: "Agentes IA", image: "/images/dr-paruzzo-brain.webp", year: "2025" },
+  { name: "Prompts Clínicos", image: "/images/dr-paruzzo-banner-1.webp", year: "2025" },
+  { name: "NotebookLM", image: "/images/dr-paruzzo-banner-2.webp", year: "2025" },
+  { name: "Neurociencia + IA", image: "/images/dr-paruzzo-brain.webp", year: "2025" },
+  { name: "Asesorías", image: "/images/dr-paruzzo-portrait.webp", year: "2025" },
+  { name: "Herramientas", image: "/images/dr-paruzzo-banner-1.webp", year: "2025" },
+  { name: "Contenido Abierto", image: "/images/dr-paruzzo-banner-2.webp", year: "2025" },
+  { name: "Comunidad", image: "/images/dr-paruzzo-brain.webp", year: "2025" },
 ];
 
 export function PortfolioSection() {
@@ -93,7 +93,7 @@ export function PortfolioSection() {
       <div className="mb-16">
         <div className="mb-8 flex items-center gap-3">
           <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
-          <span className="text-small">portfolio</span>
+          <span className="text-small">contenido</span>
           <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
         </div>
 
@@ -106,7 +106,7 @@ export function PortfolioSection() {
               textTransform: "uppercase",
             }}
           >
-            Our Work, in full bloom
+            Lo que creo, lo que comparto
           </h2>
         </div>
       </div>

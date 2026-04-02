@@ -5,7 +5,22 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import { StarIcon, ArrowRightIcon } from "@/components/icons";
+import {
+  StarIcon,
+  ArrowRightIcon,
+  WhatsAppIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  YouTubeIcon,
+  FacebookIcon,
+  TikTokIcon,
+  XTwitterIcon,
+  RedditIcon,
+  LineIcon,
+  KakaoIcon,
+  WeChatIcon,
+  ThreadsIcon,
+} from "@/components/icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,7 +136,7 @@ export function ContactSection() {
         className="pointer-events-none absolute inset-0 -z-20 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute left-1/2 top-1/3 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/30 blur-[150px]" />
+        <div className="absolute left-1/2 top-1/3 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00d4ff]/20 blur-[150px]" />
         <div ref={blobRightRef} className="absolute -right-40 bottom-0 h-[800px] w-[800px] opacity-70">
           <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
         </div>
@@ -161,7 +176,7 @@ export function ContactSection() {
             className="max-w-[200px] shrink-0 pt-2 uppercase leading-[1.7] text-white/60"
             style={{ fontSize: "10px", letterSpacing: "0.05em" }}
           >
-            Planning a wedding, launch, or private event? Have a vision, a feeling, a moment you want to bring to life? We&apos;ll bring it into bloom.
+            ¿Querés integrar IA en tu práctica profesional? ¿Tenés una idea, un proyecto o simplemente curiosidad? Hablemos.
           </p>
 
           {/* Large heading */}
@@ -176,7 +191,7 @@ export function ContactSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Let&apos;s create something unforgettable
+            Conectemos y construyamos juntos
           </h2>
         </div>
 
@@ -233,11 +248,50 @@ export function ContactSection() {
               className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-6 py-3 uppercase text-white transition-all duration-300 hover:border-white/60 hover:shadow-[0_0_25px_rgba(100,150,255,0.15)]"
               style={{ fontSize: "10.5px", letterSpacing: "0.05em" }}
             >
-              Discuss the project
+              Enviar mensaje
               <ArrowRightIcon className="h-3 w-2" />
             </button>
           </div>
         </form>
+
+        {/* Social Networks Grid */}
+        <div className="mx-auto mt-20 max-w-[900px]">
+          <div className="mb-8 flex items-center justify-center gap-3">
+            <StarIcon className="h-3 w-3 text-white/60" />
+            <span className="uppercase tracking-[0.05em] text-white" style={{ fontSize: "10.5px" }}>
+              Encontrame en todas las plataformas
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {[
+              { icon: WhatsAppIcon, label: "WhatsApp", href: "https://wa.me/543584189267" },
+              { icon: InstagramIcon, label: "Instagram", href: "https://instagram.com/dr.paruzzo" },
+              { icon: InstagramIcon, label: "IG Animaciones", href: "https://instagram.com/dr.paruzzo_animaciones" },
+              { icon: YouTubeIcon, label: "YouTube", href: "https://youtube.com/@dr.paruzzo" },
+              { icon: TikTokIcon, label: "TikTok", href: "https://tiktok.com/@dr.paruzzo" },
+              { icon: TikTokIcon, label: "TikTok Animaciones", href: "https://tiktok.com/@dr.paruzzo_animaciones" },
+              { icon: LinkedInIcon, label: "LinkedIn", href: "https://linkedin.com/in/drparuzzo" },
+              { icon: XTwitterIcon, label: "X / Twitter", href: "https://x.com/DrParuzzo" },
+              { icon: FacebookIcon, label: "Facebook", href: "https://facebook.com/dr.paruzzo" },
+              { icon: RedditIcon, label: "Reddit", href: "https://reddit.com/user/dr_paruzzo" },
+              { icon: ThreadsIcon, label: "Threads", href: "https://threads.net/@dr.paruzzo" },
+              { icon: LineIcon, label: "Line", href: "#" },
+              { icon: KakaoIcon, label: "KakaoTalk", href: "#" },
+              { icon: WeChatIcon, label: "WeChat", href: "#" },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-[10px] uppercase tracking-[0.05em] text-white/70 transition-all duration-300 hover:border-[#00d4ff]/40 hover:text-white hover:shadow-[0_0_20px_rgba(0,212,255,0.1)]"
+              >
+                <social.icon className="h-4 w-4" />
+                {social.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

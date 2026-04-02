@@ -12,21 +12,21 @@ gsap.registerPlugin(ScrollTrigger);
 const benefits = [
   {
     number: "(01)",
-    title: "Quality, that lasts",
+    title: "Médico y Psicólogo",
     description:
-      "We choose refined, long-lasting materials — safe for your guests, gentle on the space, and effortless to care for.",
+      "No soy un tech bro hablando de IA. Soy profesional de la salud — entiendo el cuerpo, la mente y cómo la tecnología impacta en ambos.",
   },
   {
     number: "(02)",
-    title: "Seamless, like nature",
+    title: "Sin barreras, sin jerga",
     description:
-      "One moment — an empty space. The next — a scene in bloom. Like a real flower opening at first light, our installations appear seamlessly.",
+      "Traduzco lo complejo en algo que podés usar hoy. Ya seas profesional de la salud o simplemente alguien curioso, el contenido es para vos.",
   },
   {
     number: "(03)",
-    title: "As unique as each flower",
+    title: "Todo abierto, todo real",
     description:
-      "No two blooms are the same — and neither are our designs. We craft each project with soul, shaped by your story and brought to life with care.",
+      "Comparto prompts, agentes, análisis y herramientas que realmente uso. Sin humo, sin venta de cursos vacíos — lo que funciona, lo regalo.",
   },
 ];
 
@@ -157,11 +157,11 @@ export function BenefitsSection() {
         <div className="mb-8">
           <div className="mb-4 flex items-center gap-3">
             <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
-            <span className="text-small">benefits</span>
+            <span className="text-small">por qué</span>
             <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
           </div>
           <span className="text-small text-white/60">
-            discover Why cube Studio
+            por qué Dr. Paruzzo
           </span>
         </div>
 
@@ -175,7 +175,7 @@ export function BenefitsSection() {
               textTransform: "uppercase",
             }}
           >
-            The beauty is in how it&apos;s done
+            La diferencia está en quién te lo cuenta
           </h2>
         </div>
 

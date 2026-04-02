@@ -53,17 +53,14 @@ export function Navbar() {
     >
       {/* Left side */}
       <div className="flex items-center gap-6">
+        <span className="text-[13px] font-light uppercase tracking-[0.08em] text-white">
+          Dr. Paruzzo
+        </span>
         <a
           href="#portfolio-trigger"
           className="text-[10.5px] font-normal uppercase tracking-[0.05em] text-white transition-opacity duration-300 hover:opacity-60"
         >
-          gallery
-        </a>
-        <a
-          href="tel:+971504757773"
-          className="text-[10.5px] font-normal uppercase tracking-[0.05em] text-white transition-opacity duration-300 hover:opacity-60"
-        >
-          +971 504757773
+          contenido
         </a>
       </div>
 
