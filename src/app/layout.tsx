@@ -10,6 +10,7 @@ const carlBrown = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://drparuzzo.com"),
   title: "Dr. Paruzzo — Donde convergen cuerpo, mente y tecnología",
   description:
     "Médico, psicólogo y explorador de inteligencia artificial. Contenido, herramientas y asesorías que conectan la salud, la mente y la tecnología.",

@@ -180,30 +180,18 @@ export function CapabilitiesSection() {
 
   return (
     <section ref={sectionRef} id="services" className="relative overflow-hidden bg-[#0a1628]">
-      {/* Background blue gradient blobs — intense + parallax */}
-      <div ref={(el) => { blobRefs.current[0] = el; }} className="pointer-events-none absolute -left-40 top-0 h-[1600px] w-[1000px] opacity-80">
-        <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-      </div>
-      <div ref={(el) => { blobRefs.current[1] = el; }} className="pointer-events-none absolute -right-40 top-[30%] h-[1600px] w-[1000px] opacity-70">
-        <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-      </div>
-      <div ref={(el) => { blobRefs.current[2] = el; }} className="pointer-events-none absolute bottom-[5%] left-1/4 h-[1600px] w-[1000px] opacity-50">
-        <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-      </div>
-      <div ref={(el) => { blobRefs.current[3] = el; }} className="pointer-events-none absolute right-1/4 top-[60%] h-[1200px] w-[800px] opacity-40">
-        <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-2xl" aria-hidden="true" />
-      </div>
+      {/* Background gradient blobs — teal + gold parallax */}
+      <div ref={(el) => { blobRefs.current[0] = el; }} className="pointer-events-none absolute -left-40 top-0 h-[1600px] w-[1000px] rounded-full opacity-80" style={{ background: "radial-gradient(circle, rgba(0,212,255,0.3) 0%, transparent 70%)", filter: "blur(40px)" }} aria-hidden="true" />
+      <div ref={(el) => { blobRefs.current[1] = el; }} className="pointer-events-none absolute -right-40 top-[30%] h-[1600px] w-[1000px] rounded-full opacity-70" style={{ background: "radial-gradient(circle, rgba(200,149,62,0.25) 0%, transparent 70%)", filter: "blur(40px)" }} aria-hidden="true" />
+      <div ref={(el) => { blobRefs.current[2] = el; }} className="pointer-events-none absolute bottom-[5%] left-1/4 h-[1600px] w-[1000px] rounded-full opacity-50" style={{ background: "radial-gradient(circle, rgba(0,212,255,0.25) 0%, transparent 70%)", filter: "blur(50px)" }} aria-hidden="true" />
+      <div ref={(el) => { blobRefs.current[3] = el; }} className="pointer-events-none absolute right-1/4 top-[60%] h-[1200px] w-[800px] rounded-full opacity-40" style={{ background: "radial-gradient(circle, rgba(200,149,62,0.2) 0%, transparent 70%)", filter: "blur(60px)" }} aria-hidden="true" />
 
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="pointer-events-none absolute top-[20%] left-1/2 z-0 h-auto w-full max-w-[1000px] -translate-x-1/2 opacity-15"
-      >
-        <source src="/videos/orchid-video.webm" type="video/webm" />
-      </video>
+      {/* Background ambient glow (replaces floral video) */}
+      <div
+        className="pointer-events-none absolute top-[20%] left-1/2 z-0 h-[800px] w-full max-w-[1000px] -translate-x-1/2 rounded-full opacity-10"
+        style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.2) 0%, rgba(200,149,62,0.1) 50%, transparent 80%)", filter: "blur(80px)" }}
+        aria-hidden="true"
+      />
 
       {/* Content */}
       <div className="relative z-10">
@@ -245,23 +233,23 @@ export function CapabilitiesSection() {
             </p>
             <a
               href="#contact"
-              className="rounded-full border border-white/20 px-5 py-2.5 text-[10.5px] uppercase tracking-[0.05em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(100,150,255,0.1)]"
+              className="rounded-full border border-white/20 px-5 py-2.5 text-[10.5px] uppercase tracking-[0.05em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]"
             >
               Contactar
             </a>
           </div>
         </div>
 
-        {/* Part 3: Mirror Image with parallax */}
+        {/* Part 3: Portrait Image with parallax */}
         <div className="relative flex justify-center pb-32">
-          <div className="mirror-parallax relative w-[65vw]">
+          <div className="mirror-parallax relative w-[55vw] max-w-[800px]">
             <Image
-              src="/images/mirror.webp"
-              alt="Decorative mirror"
-              width={1200}
+              src="/images/dr-paruzzo-portrait.webp"
+              alt="Dr. Paruzzo"
+              width={800}
               height={800}
-              className="h-auto w-full opacity-80"
-              sizes="65vw"
+              className="h-auto w-full rounded-2xl opacity-70"
+              sizes="55vw"
             />
           </div>
         </div>

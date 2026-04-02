@@ -116,40 +116,29 @@ export function BenefitsSection() {
       id="benefits"
       className="relative w-full overflow-hidden px-6 py-32 md:px-12"
     >
-      {/* Background blue blobs — intense + parallax */}
+      {/* Background gradient blobs — teal + gold parallax */}
       <div className="pointer-events-none absolute inset-0">
-        <div ref={(el) => { blobRefs.current[0] = el; }} className="absolute -right-40 top-0 h-[1200px] w-[900px] opacity-70">
-          <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-        </div>
-        <div ref={(el) => { blobRefs.current[1] = el; }} className="absolute -left-40 bottom-0 h-[1000px] w-[800px] opacity-45">
-          <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-        </div>
-        <div ref={(el) => { blobRefs.current[2] = el; }} className="absolute right-1/4 bottom-1/4 h-[800px] w-[600px] opacity-30">
-          <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-2xl" aria-hidden="true" />
-        </div>
+        <div ref={(el) => { blobRefs.current[0] = el; }} className="absolute -right-40 top-0 h-[1200px] w-[900px] rounded-full opacity-70" style={{ background: "radial-gradient(circle, rgba(0,212,255,0.3) 0%, transparent 70%)", filter: "blur(40px)" }} aria-hidden="true" />
+        <div ref={(el) => { blobRefs.current[1] = el; }} className="absolute -left-40 bottom-0 h-[1000px] w-[800px] rounded-full opacity-45" style={{ background: "radial-gradient(circle, rgba(200,149,62,0.25) 0%, transparent 70%)", filter: "blur(40px)" }} aria-hidden="true" />
+        <div ref={(el) => { blobRefs.current[2] = el; }} className="absolute right-1/4 bottom-1/4 h-[800px] w-[600px] rounded-full opacity-30" style={{ background: "radial-gradient(circle, rgba(0,212,255,0.2) 0%, transparent 70%)", filter: "blur(60px)" }} aria-hidden="true" />
       </div>
 
-      {/* Flower image */}
+      {/* Decorative brain image */}
       <Image
-        src="/images/flower-image.webp"
+        src="/images/dr-paruzzo-brain.webp"
         alt=""
         width={400}
-        height={600}
-        className="pointer-events-none absolute right-0 top-1/2 h-auto w-[400px] -translate-y-1/2 object-contain opacity-20"
+        height={400}
+        className="pointer-events-none absolute right-0 top-1/2 h-auto w-[400px] -translate-y-1/2 object-contain opacity-15"
         aria-hidden="true"
       />
 
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.12]"
+      {/* Background ambient glow (replaces floral video) */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.15) 0%, transparent 40%, rgba(200,149,62,0.1) 80%, transparent 100%)" }}
         aria-hidden="true"
-      >
-        <source src="/videos/orchid-video.webm" type="video/webm" />
-      </video>
+      />
 
       {/* Content */}
       <div className="relative z-10">

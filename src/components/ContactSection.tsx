@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -137,12 +136,8 @@ export function ContactSection() {
         aria-hidden="true"
       >
         <div className="absolute left-1/2 top-1/3 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00d4ff]/20 blur-[150px]" />
-        <div ref={blobRightRef} className="absolute -right-40 bottom-0 h-[800px] w-[800px] opacity-70">
-          <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-        </div>
-        <div ref={blobLeftRef} className="absolute -left-40 top-1/4 h-[800px] w-[800px] opacity-50">
-          <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
-        </div>
+        <div ref={blobRightRef} className="absolute -right-40 bottom-0 h-[800px] w-[800px] rounded-full opacity-70" style={{ background: "radial-gradient(circle, rgba(0,212,255,0.3) 0%, transparent 70%)", filter: "blur(40px)" }} aria-hidden="true" />
+        <div ref={blobLeftRef} className="absolute -left-40 top-1/4 h-[800px] w-[800px] rounded-full opacity-50" style={{ background: "radial-gradient(circle, rgba(200,149,62,0.25) 0%, transparent 70%)", filter: "blur(40px)" }} aria-hidden="true" />
       </div>
 
       {/* Background video */}
@@ -245,7 +240,7 @@ export function ContactSection() {
           <div className="mt-8 flex justify-center">
             <button
               type="submit"
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-6 py-3 uppercase text-white transition-all duration-300 hover:border-white/60 hover:shadow-[0_0_25px_rgba(100,150,255,0.15)]"
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-6 py-3 uppercase text-white transition-all duration-300 hover:border-white/60 hover:shadow-[0_0_25px_rgba(0,212,255,0.15)]"
               style={{ fontSize: "10.5px", letterSpacing: "0.05em" }}
             >
               Enviar mensaje

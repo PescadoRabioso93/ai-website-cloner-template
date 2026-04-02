@@ -4,6 +4,7 @@ import { CapabilitiesSection } from "@/components/CapabilitiesSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
@@ -25,6 +26,7 @@ export default function Home() {
           <PortfolioSection />
           <BenefitsSection />
           <ReviewsSection />
+          <NewsletterSection />
           <ContactSection />
         </main>
         <Footer />

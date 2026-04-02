@@ -188,6 +188,7 @@ export function HeroSection() {
           loop
           muted
           playsInline
+          poster="/images/stone-hero.webp"
           className="absolute left-1/2 top-[55%] z-[5] w-[35vw] max-w-[500px] -translate-x-1/2 -translate-y-1/2"
           style={{ mixBlendMode: "screen" }}
         >
@@ -274,50 +275,29 @@ export function HeroSection() {
           <source src="/videos/blur-bg.mp4" type="video/mp4" />
         </video>
 
-        {/* Blue blur blob — bottom right (strong) */}
+        {/* Teal glow blob — bottom right (strong) */}
         <div
           ref={blobBottomRef}
-          className="absolute -bottom-20 -right-20 opacity-90"
-          style={{ width: "900px", height: "900px" }}
-        >
-          <Image
-            src="/images/blue-blur.webp"
-            alt=""
-            fill
-            className="object-contain blur-xl"
-            aria-hidden="true"
-          />
-        </div>
+          className="pointer-events-none absolute -bottom-20 -right-20 rounded-full opacity-90"
+          style={{ width: "900px", height: "900px", background: "radial-gradient(circle, rgba(0,212,255,0.3) 0%, transparent 70%)", filter: "blur(40px)" }}
+          aria-hidden="true"
+        />
 
-        {/* Blue blob — top left */}
+        {/* Gold glow blob — top left */}
         <div
           ref={blobTopRef}
-          className="absolute -left-40 top-[15%] opacity-50"
-          style={{ width: "800px", height: "800px" }}
-        >
-          <Image
-            src="/images/blue-blur.webp"
-            alt=""
-            fill
-            className="object-contain blur-xl"
-            aria-hidden="true"
-          />
-        </div>
+          className="pointer-events-none absolute -left-40 top-[15%] rounded-full opacity-50"
+          style={{ width: "800px", height: "800px", background: "radial-gradient(circle, rgba(200,149,62,0.3) 0%, transparent 70%)", filter: "blur(40px)" }}
+          aria-hidden="true"
+        />
 
-        {/* Blue blob — center for text area glow */}
+        {/* Teal glow blob — center for text area */}
         <div
           ref={blobCenterRef}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25"
-          style={{ width: "1200px", height: "1200px" }}
-        >
-          <Image
-            src="/images/blue-blur.webp"
-            alt=""
-            fill
-            className="object-contain blur-2xl"
-            aria-hidden="true"
-          />
-        </div>
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25"
+          style={{ width: "1200px", height: "1200px", background: "radial-gradient(circle, rgba(0,212,255,0.25) 0%, transparent 70%)", filter: "blur(60px)" }}
+          aria-hidden="true"
+        />
 
         {/* Sub-hero content */}
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-4">
@@ -361,7 +341,7 @@ export function HeroSection() {
             <div className="h-24 w-px bg-white/15" />
             <a
               href="#services"
-              className="text-small mt-4 inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-3 text-[11px] uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(100,150,255,0.1)]"
+              className="text-small mt-4 inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-3 text-[11px] uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]"
             >
               Explorar
             </a>
