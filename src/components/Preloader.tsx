@@ -57,7 +57,7 @@ export function Preloader() {
           }}
         />
         <span
-          className="font-display text-[80px] font-light text-white tabular-nums"
+          className="text-[80px] font-extralight text-white tabular-nums"
           style={{ letterSpacing: "-0.02em" }}
         >
           {count}

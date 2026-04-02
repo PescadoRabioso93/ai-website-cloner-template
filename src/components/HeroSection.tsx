@@ -12,7 +12,7 @@ import { useDeviceCapability } from "@/hooks/use-device-capability";
 
 const BrainScene = dynamic(
   () => import("@/components/3d/brain-scene").then((m) => m.BrainScene),
-  { ssr: false },
+  { ssr: false, loading: () => null },
 );
 
 gsap.registerPlugin(ScrollTrigger);
@@ -221,11 +221,11 @@ export function HeroSection() {
         <div className="relative z-10 flex h-full flex-col items-center justify-center">
           <h1
             ref={heroTitleRef}
-            className="font-display text-center text-white"
+            className="text-center text-white"
             style={{
-              fontSize: "clamp(8rem, 13.5vw, 195px)",
-              fontWeight: 300,
-              lineHeight: 0.76,
+              fontSize: "clamp(7rem, 13vw, 180px)",
+              fontWeight: 200,
+              lineHeight: 0.82,
               textTransform: "uppercase",
             }}
           >
@@ -326,18 +326,25 @@ export function HeroSection() {
           {/* Large heading — SplitType blur reveal */}
           <h2
             ref={subHeroHeadingRef}
-            className="text-center font-light"
+            className="text-center"
             style={{
-              fontSize: "clamp(4rem, 15vw, 220px)",
-              lineHeight: 0.88,
+              fontSize: "clamp(3.5rem, 12vw, 180px)",
+              lineHeight: 0.92,
               textTransform: "uppercase",
               fontFamily: '"Helvetica Neue", Arial, sans-serif',
               fontWeight: 200,
-              color: "rgba(255,255,255,1)",
+              color: "rgba(255,255,255,0.5)",
               letterSpacing: "-0.03em",
             }}
           >
-            DONDE CONVERGEN CUERPO MENTE Y TECNOLOGÍA
+            DONDE CONVERGEN{" "}
+            <span style={{ fontWeight: 400, color: "rgba(255,255,255,1)" }}>CUERPO,</span>{" "}
+            <span style={{ fontWeight: 400, color: "rgba(255,255,255,1)" }}>MENTE</span>{" "}
+            Y{" "}
+            <span style={{ fontWeight: 400, color: "rgba(255,255,255,1)" }}>
+              TECNOLOG
+              <span style={{ fontWeight: 700 }}>ÍA</span>
+            </span>
           </h2>
 
           {/* Horizontal rule + star */}

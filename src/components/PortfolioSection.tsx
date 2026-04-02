@@ -1,35 +1,118 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, FreeMode, EffectCoverflow } from "swiper/modules";
-import type { Swiper as SwiperClass } from "swiper/types";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import { ArrowLeftIcon, ArrowRightIcon, StarIcon } from "@/components/icons";
-
-import "swiper/css";
-import "swiper/css/effect-coverflow";
+import { StarIcon } from "@/components/icons";
+import {
+  InstagramIcon,
+  YouTubeIcon,
+  TikTokIcon,
+  LinkedInIcon,
+  XTwitterIcon,
+  FacebookIcon,
+  RedditIcon,
+  ThreadsIcon,
+  WhatsAppIcon,
+} from "@/components/icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  { name: "Agentes IA", image: "/images/dr-paruzzo-brain.webp", year: "2025" },
-  { name: "Prompts Clínicos", image: "/images/dr-paruzzo-banner-1.webp", year: "2025" },
-  { name: "NotebookLM", image: "/images/dr-paruzzo-banner-2.webp", year: "2025" },
-  { name: "Neurociencia + IA", image: "/images/dr-paruzzo-brain.webp", year: "2025" },
-  { name: "Asesorías", image: "/images/dr-paruzzo-portrait.webp", year: "2025" },
-  { name: "Herramientas", image: "/images/dr-paruzzo-banner-1.webp", year: "2025" },
-  { name: "Contenido Abierto", image: "/images/dr-paruzzo-banner-2.webp", year: "2025" },
-  { name: "Comunidad", image: "/images/dr-paruzzo-brain.webp", year: "2025" },
+const socials = [
+  {
+    name: "Instagram",
+    handle: "@dr.paruzzo",
+    href: "https://instagram.com/dr.paruzzo",
+    icon: InstagramIcon,
+    color: "#E1306C",
+    description: "Contenido diario, reels, historias",
+  },
+  {
+    name: "YouTube",
+    handle: "@dr.paruzzo",
+    href: "https://youtube.com/@dr.paruzzo",
+    icon: YouTubeIcon,
+    color: "#FF0000",
+    description: "Videos largos, análisis profundos",
+  },
+  {
+    name: "TikTok",
+    handle: "@dr.paruzzo",
+    href: "https://tiktok.com/@dr.paruzzo",
+    icon: TikTokIcon,
+    color: "#ffffff",
+    description: "Clips cortos, tips rápidos",
+  },
+  {
+    name: "LinkedIn",
+    handle: "drparuzzo",
+    href: "https://linkedin.com/in/drparuzzo",
+    icon: LinkedInIcon,
+    color: "#0A66C2",
+    description: "Networking profesional, artículos",
+  },
+  {
+    name: "X / Twitter",
+    handle: "@DrParuzzo",
+    href: "https://x.com/DrParuzzo",
+    icon: XTwitterIcon,
+    color: "#ffffff",
+    description: "Opiniones, threads, debates",
+  },
+  {
+    name: "Facebook",
+    handle: "dr.paruzzo",
+    href: "https://facebook.com/dr.paruzzo",
+    icon: FacebookIcon,
+    color: "#1877F2",
+    description: "Comunidad, eventos, lives",
+  },
+  {
+    name: "IG Animaciones",
+    handle: "@dr.paruzzo_animaciones",
+    href: "https://instagram.com/dr.paruzzo_animaciones",
+    icon: InstagramIcon,
+    color: "#C13584",
+    description: "Animaciones 3D médicas",
+  },
+  {
+    name: "TikTok Animaciones",
+    handle: "@dr.paruzzo_animaciones",
+    href: "https://tiktok.com/@dr.paruzzo_animaciones",
+    icon: TikTokIcon,
+    color: "#69C9D0",
+    description: "Clips de animaciones virales",
+  },
+  {
+    name: "Reddit",
+    handle: "dr_paruzzo",
+    href: "https://reddit.com/user/dr_paruzzo",
+    icon: RedditIcon,
+    color: "#FF4500",
+    description: "Discusiones, AMAs",
+  },
+  {
+    name: "Threads",
+    handle: "@dr.paruzzo",
+    href: "https://threads.net/@dr.paruzzo",
+    icon: ThreadsIcon,
+    color: "#ffffff",
+    description: "Conversaciones casuales",
+  },
+  {
+    name: "WhatsApp",
+    handle: "+54 358 418 9267",
+    href: "https://wa.me/543584189267",
+    icon: WhatsAppIcon,
+    color: "#25D366",
+    description: "Mensajes directos",
+  },
 ];
 
 export function PortfolioSection() {
-  const swiperRef = useRef<SwiperClass | null>(null);
   const headingRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -62,18 +145,21 @@ export function PortfolioSection() {
         }
       }
 
-      /* ─── Carousel entrance ─── */
-      if (carouselRef.current) {
+      /* ─── Grid cards stagger entrance ─── */
+      if (gridRef.current) {
+        const cards = gridRef.current.querySelectorAll(".social-card");
         gsap.fromTo(
-          carouselRef.current,
-          { opacity: 0, y: 80 },
+          cards,
+          { opacity: 0, y: 40, scale: 0.95 },
           {
             opacity: 1,
             y: 0,
-            duration: 1.2,
+            scale: 1,
+            duration: 0.6,
             ease: "power2.out",
+            stagger: 0.08,
             scrollTrigger: {
-              trigger: carouselRef.current,
+              trigger: gridRef.current,
               start: "top 85%",
               toggleActions: "play none none none",
             },
@@ -93,7 +179,7 @@ export function PortfolioSection() {
       <div className="mb-16">
         <div className="mb-8 flex items-center gap-3">
           <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
-          <span className="text-small">contenido</span>
+          <span className="text-small">redes</span>
           <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
         </div>
 
@@ -101,81 +187,62 @@ export function PortfolioSection() {
           <h2
             style={{
               fontSize: "clamp(2.5rem, 7.3vw, 105px)",
-              fontWeight: 300,
+              fontWeight: 200,
               lineHeight: 0.85,
               textTransform: "uppercase",
+              letterSpacing: "-0.03em",
             }}
           >
-            Lo que creo, lo que comparto
+            Encontrame en todos lados
           </h2>
         </div>
       </div>
 
-      {/* Swiper Carousel — 3D Coverflow effect */}
-      <div ref={carouselRef} className="relative" style={{ perspective: "1200px" }}>
-        <Swiper
-          modules={[Navigation, FreeMode, EffectCoverflow]}
-          effect="coverflow"
-          coverflowEffect={{
-            rotate: 8,
-            stretch: 0,
-            depth: 200,
-            modifier: 1,
-            slideShadows: false,
-          }}
-          slidesPerView={2.5}
-          spaceBetween={20}
-          freeMode
-          grabCursor
-          data-cursor-drag
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          className="w-full"
-        >
-          {projects.map((project) => (
-            <SwiperSlide key={project.name}>
-              <div className="group flex flex-col">
-                <div className="overflow-hidden rounded-sm">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    width={500}
-                    height={650}
-                    className="h-auto w-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
-                    sizes="(max-width: 768px) 80vw, 35vw"
-                  />
-                </div>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-small">{project.year}</span>
-                  <span className="text-small text-white/50 uppercase">
-                    {project.name}
-                  </span>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      {/* Social Media Grid */}
+      <div
+        ref={gridRef}
+        className="mx-auto grid max-w-[1200px] grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+      >
+        {socials.map((social) => (
+          <a
+            key={social.name}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-card group relative flex flex-col items-center gap-3 rounded-2xl border border-white/8 px-4 py-8 transition-all duration-500 hover:border-white/20 hover:bg-white/[0.03]"
+            style={{
+              background: "linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%)",
+            }}
+          >
+            {/* Hover glow */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              style={{
+                background: `radial-gradient(circle at center, ${social.color}10 0%, transparent 70%)`,
+              }}
+            />
 
-        {/* Navigation Arrows */}
-        <div className="mt-8 flex items-center gap-6">
-          <button
-            type="button"
-            aria-label="Previous slide"
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="transition-all duration-300 hover:opacity-60 hover:scale-110"
-          >
-            <ArrowLeftIcon className="h-5 w-3" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next slide"
-            onClick={() => swiperRef.current?.slideNext()}
-            className="transition-all duration-300 hover:opacity-60 hover:scale-110"
-          >
-            <ArrowRightIcon className="h-5 w-3" />
-          </button>
-        </div>
+            {/* Icon */}
+            <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
+              <social.icon className="h-8 w-8 text-white/70 transition-colors duration-300 group-hover:text-white" />
+            </div>
+
+            {/* Name */}
+            <span className="relative z-10 text-[13px] font-light tracking-wide text-white">
+              {social.name}
+            </span>
+
+            {/* Handle */}
+            <span className="relative z-10 text-[10px] uppercase tracking-[0.05em] text-white/40">
+              {social.handle}
+            </span>
+
+            {/* Description */}
+            <span className="relative z-10 text-center text-[9px] uppercase tracking-[0.04em] text-white/25 transition-colors duration-300 group-hover:text-white/50">
+              {social.description}
+            </span>
+          </a>
+        ))}
       </div>
     </section>
   );

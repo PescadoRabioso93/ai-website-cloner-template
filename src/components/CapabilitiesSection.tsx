@@ -284,7 +284,7 @@ export function CapabilitiesSection() {
 
                   {/* Border overlay */}
                   <Image
-                    src="/images/qué hago-border.webp"
+                    src="/images/capabilities-border.webp"
                     alt=""
                     fill
                     className="pointer-events-none rounded-[24px] object-cover opacity-60"
@@ -296,7 +296,7 @@ export function CapabilitiesSection() {
                     <span className="text-[11px] uppercase tracking-[0.08em] text-white/70">
                       {card.number}
                     </span>
-                    <h3 className="font-display text-center text-[56px] font-light uppercase leading-[0.88] text-white">
+                    <h3 className="text-center text-[48px] font-extralight uppercase leading-[0.92] tracking-tight text-white">
                       {card.title}
                     </h3>
                     <p className="max-w-[320px] text-center text-[11px] uppercase leading-[1.7] tracking-[0.06em] text-white/55">
