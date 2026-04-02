@@ -6,27 +6,28 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { StarIcon } from "@/components/icons";
+import { NeuralNetworkCanvas } from "@/components/neural-network-canvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const benefits = [
   {
     number: "(01)",
-    title: "Quality, that lasts",
+    title: "Médico y Psicólogo",
     description:
-      "We choose refined, long-lasting materials — safe for your guests, gentle on the space, and effortless to care for.",
+      "No soy un tech bro hablando de IA. Soy profesional de la salud — entiendo el cuerpo, la mente y cómo la tecnología impacta en ambos.",
   },
   {
     number: "(02)",
-    title: "Seamless, like nature",
+    title: "Sin barreras, sin jerga",
     description:
-      "One moment — an empty space. The next — a scene in bloom. Like a real flower opening at first light, our installations appear seamlessly.",
+      "Traduzco lo complejo en algo que podés usar hoy. Ya seas profesional de la salud o simplemente alguien curioso, el contenido es para vos.",
   },
   {
     number: "(03)",
-    title: "As unique as each flower",
+    title: "Todo abierto, todo real",
     description:
-      "No two blooms are the same — and neither are our designs. We craft each project with soul, shaped by your story and brought to life with care.",
+      "Comparto prompts, agentes, análisis y herramientas que realmente uso. Sin humo, sin venta de cursos vacíos — lo que funciona, lo regalo.",
   },
 ];
 
@@ -129,27 +130,15 @@ export function BenefitsSection() {
         </div>
       </div>
 
-      {/* Flower image */}
-      <Image
-        src="/images/flower-image.webp"
-        alt=""
-        width={400}
-        height={600}
-        className="pointer-events-none absolute right-0 top-1/2 h-auto w-[400px] -translate-y-1/2 object-contain opacity-20"
+      {/* Neural network background */}
+      <NeuralNetworkCanvas nodeCount={60} pulseCount={12} opacity={0.12} />
+
+      {/* Background ambient glow */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.15) 0%, transparent 40%, rgba(200,149,62,0.1) 80%, transparent 100%)" }}
         aria-hidden="true"
       />
-
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.12]"
-        aria-hidden="true"
-      >
-        <source src="/videos/orchid-video.webm" type="video/webm" />
-      </video>
 
       {/* Content */}
       <div className="relative z-10">
@@ -157,11 +146,11 @@ export function BenefitsSection() {
         <div className="mb-8">
           <div className="mb-4 flex items-center gap-3">
             <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
-            <span className="text-small">benefits</span>
+            <span className="text-small">por qué</span>
             <StarIcon className="h-3 w-3 animate-[starSpin_8s_linear_infinite]" />
           </div>
           <span className="text-small text-white/60">
-            discover Why cube Studio
+            por qué Dr. Paruzzo
           </span>
         </div>
 
@@ -175,7 +164,7 @@ export function BenefitsSection() {
               textTransform: "uppercase",
             }}
           >
-            The beauty is in how it&apos;s done
+            La diferencia está en quién te lo cuenta
           </h2>
         </div>
 

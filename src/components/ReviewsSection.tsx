@@ -16,44 +16,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    name: "Omar",
-    role: "Hospitality Brand Manager",
+    name: "Próximamente",
+    role: "Profesional de la salud",
     number: "( 01 )",
-    title: "Everything was delivered on time and with zero stress.",
-    text: "We needed a clean, elegant setup for a private dinner. The team handled everything quietly and efficiently. The space looked sharp, exactly how we imagined it — no distractions, no noise, just quality.",
-    image: "/images/author-1.webp",
+    title: "Acá van a estar las voces de quienes ya usan estas herramientas.",
+    text: "Estamos construyendo esta comunidad juntos. Si usaste alguno de mis prompts, agentes o recursos y te sirvió — tu testimonio puede estar acá. Escribime por WhatsApp.",
+    image: "/images/dr-paruzzo-portrait.webp",
   },
   {
-    name: "Layla",
-    role: "Event Producer",
+    name: "Próximamente",
+    role: "Paciente / público general",
     number: "( 02 )",
-    title: "They listen — and that shows in the result.",
-    text: "We had a layered concept and limited time. They didn't overcomplicate anything. Just understood the direction, kept it clean, and delivered something that made sense visually and emotionally.",
-    image: "/images/author-2.webp",
-  },
-  {
-    name: "Zain",
-    role: "Founder, Boutique Fashion Label",
-    number: "( 03 )",
-    title: "They respected the tone of our brand completely.",
-    text: "It's rare to work with a team that doesn't try to 'make it theirs.' The mood, the materials, the flow — it all felt aligned with what we stand for. Subtle, minimal, but with intention.",
-    image: "/images/author-3.webp",
-  },
-  {
-    name: "Hana",
-    role: "Bride",
-    number: "( 04 )",
-    title: "It felt like they actually cared about how it would feel.",
-    text: "They didn't push their own taste — they asked the right questions and gave us space to shape it together. In the end, it looked beautiful, but more importantly, it felt like us.",
-    image: "/images/author-4.webp",
-  },
-  {
-    name: "Tarek",
-    role: "Creative Director, PR Agency",
-    number: "( 05 )",
-    title: "No need for micromanaging — they get it.",
-    text: "We briefed once, and they came back with a setup that hit the mark. Visually consistent, functional, and clear. Our clients noticed the difference — it didn't feel like standard event decor.",
-    image: "/images/author-5.webp",
+    title: "Tu experiencia importa tanto como la de cualquier profesional.",
+    text: "No importa si sos médico, psicólogo o simplemente alguien que quiere entender mejor la IA y la salud. Si algo de lo que compartí te cambió la perspectiva — contalo.",
+    image: "/images/dr-paruzzo-portrait.webp",
   },
 ];
 
@@ -124,7 +100,7 @@ export function ReviewsSection() {
         ref={bgHeadingRef}
         className="absolute top-24 left-6 md:left-12 text-heading-medium pointer-events-none select-none z-0"
       >
-        Clients say about cube
+        Lo que dicen quienes ya están
       </h2>
 
       {/* Carousel */}
@@ -152,22 +128,14 @@ export function ReviewsSection() {
                     {testimonial.role}
                   </span>
 
-                  {/* Author image with border overlay */}
+                  {/* Author image */}
                   <div className="relative w-[120px] h-[120px] mt-4">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
                       width={120}
                       height={120}
-                      className="rounded-full object-cover w-full h-full"
-                    />
-                    <Image
-                      src="/images/author-border.webp"
-                      alt=""
-                      width={140}
-                      height={140}
-                      className="absolute -inset-[10px] w-[140px] h-[140px] pointer-events-none"
-                      aria-hidden="true"
+                      className="rounded-full object-cover w-full h-full ring-1 ring-[#00d4ff]/20"
                     />
                   </div>
                 </div>

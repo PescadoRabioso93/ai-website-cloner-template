@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { StarIcon } from "@/components/icons";
+import { NeuralNetworkCanvas } from "@/components/neural-network-canvas";
+import { useDeviceCapability } from "@/hooks/use-device-capability";
+
+const BrainScene = dynamic(
+  () => import("@/components/3d/brain-scene").then((m) => m.BrainScene),
+  { ssr: false, loading: () => null },
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +22,8 @@ export function HeroSection() {
   const subHeroHeadingRef = useRef<HTMLHeadingElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const rockVideoRef = useRef<HTMLVideoElement>(null);
+  const brainRef = useRef<HTMLDivElement>(null);
+  const { canRender3D } = useDeviceCapability();
   const blobBottomRef = useRef<HTMLDivElement>(null);
   const blobTopRef = useRef<HTMLDivElement>(null);
   const blobCenterRef = useRef<HTMLDivElement>(null);
@@ -23,7 +32,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* ─── Hero title entrance: "CUBE STUDIO" ─── */
+      /* ─── Hero title entrance: "DR. PARUZZO" ─── */
       if (heroTitleRef.current) {
         const titleSplit = new SplitType(heroTitleRef.current, {
           types: "chars",
@@ -71,12 +80,11 @@ export function HeroSection() {
         },
       });
 
-      /* ─── Rock video parallax ─── */
-      if (rockVideoRef.current) {
-        gsap.to(rockVideoRef.current, {
-          y: -250,
-          rotation: 18,
-          scale: 0.8,
+      /* ─── Brain container parallax (for both 3D and fallback) ─── */
+      if (brainRef.current) {
+        gsap.to(brainRef.current, {
+          y: -200,
+          scale: 0.85,
           scrollTrigger: {
             trigger: heroContentRef.current,
             start: "top top",
@@ -166,14 +174,14 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative" style={{ height: "2755px" }}>
+    <section id="hero-trigger" className="relative" style={{ height: "2755px" }}>
       {/* ───── Part 1: Hero Content ───── */}
       <div ref={heroContentRef} className="relative h-screen overflow-hidden">
         {/* Hero background image */}
         <div className="hero-bg-image absolute inset-0">
           <Image
-            src="/images/hero-image.webp"
-            alt="Cube Studio hero — surreal landscape with reflective cube"
+            src="/images/dr-paruzzo-banner-1.webp"
+            alt="Dr. Paruzzo — Donde convergen cuerpo, mente y tecnología"
             fill
             priority
             className="object-cover object-center"
@@ -181,20 +189,35 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
         </div>
 
-        {/* 3D Rock/Crystal video element */}
-        <video
-          ref={rockVideoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute left-1/2 top-[55%] z-[5] w-[35vw] max-w-[500px] -translate-x-1/2 -translate-y-1/2"
-          style={{ mixBlendMode: "screen" }}
+        {/* 3D Brain scene (desktop) or static fallback (mobile) */}
+        <div
+          ref={brainRef}
+          className="absolute left-1/2 top-[50%] z-[5] aspect-square w-[40vw] max-w-[550px] -translate-x-1/2 -translate-y-1/2"
         >
-          <source src="/videos/hero-rock.webm" type="video/webm" />
-        </video>
+          {canRender3D ? (
+            <BrainScene scrollTrigger="#hero-trigger" />
+          ) : (
+            <div style={{ mixBlendMode: "screen", filter: "drop-shadow(0 0 20px rgba(0,212,255,0.3))" }}>
+              <Image
+                src="/images/dr-paruzzo-brain.webp"
+                alt="Neurociencia e Inteligencia Artificial"
+                width={500}
+                height={500}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
+          )}
+        </div>
 
-        {/* Heading: CUBE STUDIO — entrance animation via SplitType */}
+        {/* Neural network synapses background */}
+        <NeuralNetworkCanvas
+          nodeCount={canRender3D ? 100 : 60}
+          pulseCount={canRender3D ? 25 : 15}
+          opacity={0.25}
+        />
+
+        {/* Heading: DR. PARUZZO — entrance animation via SplitType */}
         <div className="relative z-10 flex h-full flex-col items-center justify-center">
           <h1
             ref={heroTitleRef}
@@ -206,8 +229,8 @@ export function HeroSection() {
               textTransform: "uppercase",
             }}
           >
-            <span className="block">cube</span>
-            <span className="block">studio</span>
+            <span className="block">Dr.</span>
+            <span className="block">Paruzzo</span>
           </h1>
         </div>
 
@@ -331,11 +354,18 @@ export function HeroSection() {
               textTransform: "uppercase",
               fontFamily: '"Helvetica Neue", Arial, sans-serif',
               fontWeight: 200,
-              color: "rgba(255,255,255,1)",
+              color: "rgba(255,255,255,0.45)",
               letterSpacing: "-0.03em",
             }}
           >
-            DESIGN THAT BLOOMS INTO EMOTION
+            DONDE CONVERGEN{" "}
+            <span style={{ fontWeight: 300, color: "rgba(255,255,255,1)" }}>CUERPO,</span>{" "}
+            <span style={{ fontWeight: 300, color: "rgba(255,255,255,1)" }}>MENTE</span>{" "}
+            Y{" "}
+            <span style={{ fontWeight: 300, color: "rgba(255,255,255,1)" }}>
+              TECNOLOG
+              <span style={{ fontWeight: 600 }}>ÍA</span>
+            </span>
           </h2>
 
           {/* Horizontal rule + star */}
@@ -350,10 +380,10 @@ export function HeroSection() {
             className="text-small mx-auto mt-10 max-w-[620px] text-center uppercase tracking-[0.05em] text-white/70"
             style={{ lineHeight: 1.9, fontSize: "11px" }}
           >
-            We create immersive floral design for weddings, brand events, and
-            personal moments. Each project is shaped with intention to turn space
-            into a story — felt deeply, remembered clearly, and never quite
-            forgotten.
+            Médico, psicólogo y explorador de inteligencia artificial.
+            Creo contenido, herramientas y experiencias que conectan
+            la salud, la mente y la tecnología — para profesionales
+            y para todos los que buscan entender el futuro.
           </p>
 
           {/* Vertical line + CTA Button */}
@@ -361,9 +391,9 @@ export function HeroSection() {
             <div className="h-24 w-px bg-white/15" />
             <a
               href="#services"
-              className="text-small mt-4 inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-3 text-[11px] uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(100,150,255,0.1)]"
+              className="text-small mt-4 inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-3 text-[11px] uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]"
             >
-              Our Services
+              Explorar
             </a>
           </div>
         </div>

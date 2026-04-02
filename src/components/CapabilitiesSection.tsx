@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { StarIcon } from "@/components/icons";
+import { NeuralNetworkCanvas } from "@/components/neural-network-canvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,27 +19,27 @@ interface CapabilityCard {
 const CARDS: CapabilityCard[] = [
   {
     number: "(01)",
-    title: "Artificial Flowers and Plants",
+    title: "Contenido Educativo",
     description:
-      "Low-maintenance, high-quality artificial plants for lasting indoor & outdoor aesthetics",
+      "Prompts, agentes IA y recursos gratuitos para entender y aplicar la inteligencia artificial en tu vida y profesión",
   },
   {
     number: "(02)",
-    title: "Custom Event Decorations",
+    title: "Asesorías Profesionales",
     description:
-      "Tailored solutions for weddings, corporate events, and private parties",
+      "Orientación personalizada para profesionales de la salud que quieren integrar IA en su práctica clínica",
   },
   {
     number: "(03)",
-    title: "Modern Table Settings",
+    title: "Podcasts y Análisis",
     description:
-      "Elegant and modern table designs that complement every theme",
+      "Episodios en NotebookLM y análisis profundos sobre la intersección entre neurociencia, psicología e IA",
   },
   {
     number: "(04)",
-    title: "Design Consultations",
+    title: "Comunidad Abierta",
     description:
-      "Expert advice on theme development, color schemes, and layout planning",
+      "Un espacio para compartir, aprender y construir juntos — desde todas las plataformas, sin barreras",
   },
 ];
 
@@ -179,7 +180,7 @@ export function CapabilitiesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="services" className="relative overflow-hidden bg-black">
+    <section ref={sectionRef} id="services" className="relative overflow-hidden bg-[#0a1628]">
       {/* Background blue gradient blobs — intense + parallax */}
       <div ref={(el) => { blobRefs.current[0] = el; }} className="pointer-events-none absolute -left-40 top-0 h-[1600px] w-[1000px] opacity-80">
         <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-xl" aria-hidden="true" />
@@ -194,16 +195,15 @@ export function CapabilitiesSection() {
         <Image src="/images/blue-blur.webp" alt="" fill className="object-contain blur-2xl" aria-hidden="true" />
       </div>
 
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="pointer-events-none absolute top-[20%] left-1/2 z-0 h-auto w-full max-w-[1000px] -translate-x-1/2 opacity-15"
-      >
-        <source src="/videos/orchid-video.webm" type="video/webm" />
-      </video>
+      {/* Neural network background */}
+      <NeuralNetworkCanvas nodeCount={80} pulseCount={15} opacity={0.15} />
+
+      {/* Background ambient glow */}
+      <div
+        className="pointer-events-none absolute top-[20%] left-1/2 z-0 h-[800px] w-full max-w-[1000px] -translate-x-1/2 rounded-full opacity-10"
+        style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.2) 0%, rgba(200,149,62,0.1) 50%, transparent 80%)", filter: "blur(80px)" }}
+        aria-hidden="true"
+      />
 
       {/* Content */}
       <div className="relative z-10">
@@ -212,19 +212,19 @@ export function CapabilitiesSection() {
           <div className="mb-12 flex items-center gap-2">
             <StarIcon className="h-3 w-3 animate-[starSpin_10s_linear_infinite]" />
             <span className="text-[10.5px] font-normal uppercase tracking-[0.05em] text-white">
-              capabilities
+              qué hago
             </span>
           </div>
 
           <div ref={headingRef}>
             <h2 className="text-left" style={{ fontSize: "clamp(2.5rem, 7.3vw, 105px)", fontWeight: 300, lineHeight: 0.76, textTransform: "uppercase" }}>
-              Let&apos;s make
+              Entender
             </h2>
             <h2 className="text-right" style={{ fontSize: "clamp(2.5rem, 7.3vw, 105px)", fontWeight: 300, lineHeight: 0.76, textTransform: "uppercase" }}>
-              the moment
+              para poder
             </h2>
             <h2 className="text-left" style={{ fontSize: "clamp(2.5rem, 7.3vw, 105px)", fontWeight: 300, lineHeight: 0.76, textTransform: "uppercase" }}>
-              blossom
+              transformar
             </h2>
           </div>
         </div>
@@ -234,34 +234,34 @@ export function CapabilitiesSection() {
           <div className="flex items-center gap-2">
             <StarIcon className="h-3 w-3" />
             <span className="text-[10.5px] font-normal uppercase tracking-[0.05em] text-white">
-              capabilities
+              qué hago
             </span>
           </div>
           <div className="flex max-w-[300px] flex-col items-end gap-6">
             <p ref={descRef} className="text-[10.5px] uppercase leading-[1.6] tracking-[0.05em] text-white/60">
-              What fades in form can still remain in feeling. Our arrangements
-              reflect your moment — its light, its tone, its soul — and let it
-              echo gently, even after it&apos;s gone.
+              La tecnología avanza. La mente necesita entenderla.
+              El cuerpo necesita integrarla. Creo puentes entre estos
+              tres mundos — para que el futuro no te pase por encima.
             </p>
             <a
               href="#contact"
-              className="rounded-full border border-white/20 px-5 py-2.5 text-[10.5px] uppercase tracking-[0.05em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(100,150,255,0.1)]"
+              className="rounded-full border border-white/20 px-5 py-2.5 text-[10.5px] uppercase tracking-[0.05em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]"
             >
-              Plan Your Event
+              Contactar
             </a>
           </div>
         </div>
 
-        {/* Part 3: Mirror Image with parallax */}
+        {/* Part 3: Portrait Image with parallax */}
         <div className="relative flex justify-center pb-32">
-          <div className="mirror-parallax relative w-[65vw]">
+          <div className="mirror-parallax relative w-[55vw] max-w-[800px]">
             <Image
-              src="/images/mirror.webp"
-              alt="Decorative mirror"
-              width={1200}
+              src="/images/dr-paruzzo-portrait.webp"
+              alt="Dr. Paruzzo"
+              width={800}
               height={800}
-              className="h-auto w-full opacity-80"
-              sizes="65vw"
+              className="h-auto w-full rounded-2xl opacity-70"
+              sizes="55vw"
             />
           </div>
         </div>
@@ -279,15 +279,15 @@ export function CapabilitiesSection() {
                   style={{
                     transformStyle: "preserve-3d",
                     transform: `rotate(${i % 2 === 0 ? 3 : -3}deg)`,
-                    background: "linear-gradient(180deg, rgba(20,40,100,0.5) 0%, rgba(5,10,30,0.9) 50%, rgba(10,20,50,0.7) 100%)",
-                    boxShadow: "0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(30,64,175,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+                    background: "linear-gradient(180deg, rgba(0,212,255,0.12) 0%, rgba(10,22,40,0.95) 50%, rgba(200,149,62,0.08) 100%)",
+                    boxShadow: "0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(0,212,255,0.1), inset 0 1px 0 rgba(255,255,255,0.05)",
                     border: "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
                   {/* Glassmorphism glow at top */}
                   <div
                     className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2"
-                    style={{ width: "400px", height: "300px", background: "radial-gradient(ellipse, rgba(40,80,200,0.25) 0%, transparent 70%)" }}
+                    style={{ width: "400px", height: "300px", background: "radial-gradient(ellipse, rgba(0,212,255,0.2) 0%, transparent 70%)" }}
                   />
 
                   {/* Border overlay */}

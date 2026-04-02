@@ -10,22 +10,23 @@ const carlBrown = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Cube Studio",
+  metadataBase: new URL("https://drparuzzo.com"),
+  title: "Dr. Paruzzo — Donde convergen cuerpo, mente y tecnología",
   description:
-    "We create immersive floral design for weddings, brand events, and personal moments. Each project is shaped with intention to turn space into a story — felt deeply, remembered clearly, and never quite forgotten.",
+    "Médico, psicólogo y explorador de inteligencia artificial. Contenido, herramientas y asesorías que conectan la salud, la mente y la tecnología.",
   openGraph: {
-    title: "Cube Studio",
+    title: "Dr. Paruzzo — Cuerpo, Mente y Tecnología",
     description:
-      "We create immersive floral design for weddings, brand events, and personal moments.",
-    images: [{ url: "/seo/og-image.png" }],
+      "Contenido educativo, prompts, agentes IA y asesorías para profesionales de la salud y público general.",
+    images: [{ url: "/seo/og-image.webp" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cube Studio",
+    title: "Dr. Paruzzo — Cuerpo, Mente y Tecnología",
     description:
-      "We create immersive floral design for weddings, brand events, and personal moments.",
-    images: ["/seo/og-image.png"],
+      "Contenido educativo, prompts, agentes IA y asesorías para profesionales de la salud y público general.",
+    images: ["/seo/og-image.webp"],
   },
   icons: {
     icon: "/seo/favicon.png",
@@ -39,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${carlBrown.variable} dark`}>
-      <body className="min-h-screen bg-black text-white antialiased">
+    <html lang="es" className={`${carlBrown.variable} dark`}>
+      <body className="min-h-screen bg-[#0a1628] text-[#f0f4ff] antialiased">
         {children}
       </body>
     </html>
