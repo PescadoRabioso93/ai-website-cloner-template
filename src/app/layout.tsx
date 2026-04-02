@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Dr. Paruzzo — Cuerpo, Mente y Tecnología",
     description:
       "Contenido educativo, prompts, agentes IA y asesorías para profesionales de la salud y público general.",
-    images: [{ url: "/images/dr-paruzzo-portrait.webp" }],
+    images: [{ url: "/seo/og-image.webp" }],
     type: "website",
   },
   twitter: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Dr. Paruzzo — Cuerpo, Mente y Tecnología",
     description:
       "Contenido educativo, prompts, agentes IA y asesorías para profesionales de la salud y público general.",
-    images: ["/images/dr-paruzzo-portrait.webp"],
+    images: ["/seo/og-image.webp"],
   },
   icons: {
     icon: "/seo/favicon.png",

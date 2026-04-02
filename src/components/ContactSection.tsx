@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -15,9 +15,6 @@ import {
   TikTokIcon,
   XTwitterIcon,
   RedditIcon,
-  LineIcon,
-  KakaoIcon,
-  WeChatIcon,
   ThreadsIcon,
 } from "@/components/icons";
 
@@ -29,6 +26,41 @@ export function ContactSection() {
   const descRef = useRef<HTMLParagraphElement>(null);
   const blobRightRef = useRef<HTMLDivElement>(null);
   const blobLeftRef = useRef<HTMLDivElement>(null);
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setFormStatus("loading");
+    setFormError("");
+
+    const data = new FormData(e.currentTarget);
+    const body = {
+      name: data.get("name") as string,
+      email: data.get("email") as string,
+      phone: data.get("phone") as string,
+      message: data.get("message") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setFormStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setFormStatus("error");
+        setFormError(json.error ?? "Error al enviar");
+      }
+    } catch {
+      setFormStatus("error");
+      setFormError("Error de conexión. Intentá de nuevo.");
+    }
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -193,7 +225,7 @@ export function ContactSection() {
         {/* Contact form — stagger entrance */}
         <form
           ref={formRef}
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           className="mx-auto max-w-[900px]"
         >
           <div className="grid grid-cols-1 gap-x-8 md:grid-cols-2">
@@ -201,24 +233,29 @@ export function ContactSection() {
               <input
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder="Nombre"
+                aria-label="Nombre"
                 className="input-field"
                 autoComplete="name"
+                required
               />
             </div>
             <div className="row-span-2">
               <textarea
                 name="message"
-                placeholder="How can we help you"
+                placeholder="¿En qué puedo ayudarte?"
+                aria-label="Mensaje"
                 className="input-field resize-none md:h-full"
                 rows={4}
+                required
               />
             </div>
             <div>
               <input
                 type="tel"
                 name="phone"
-                placeholder="Phone"
+                placeholder="Teléfono"
+                aria-label="Teléfono"
                 className="input-field"
                 autoComplete="tel"
               />
@@ -231,21 +268,32 @@ export function ContactSection() {
                 type="email"
                 name="email"
                 placeholder="E-mail"
+                aria-label="Email"
                 className="input-field"
                 autoComplete="email"
+                required
               />
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex flex-col items-center gap-3">
             <button
               type="submit"
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-6 py-3 uppercase text-white transition-all duration-300 hover:border-white/60 hover:shadow-[0_0_25px_rgba(0,212,255,0.15)]"
+              disabled={formStatus === "loading"}
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-6 py-3 uppercase text-white transition-all duration-300 hover:border-[#00d4ff]/60 hover:shadow-[0_0_25px_rgba(0,212,255,0.15)] disabled:opacity-50"
               style={{ fontSize: "10.5px", letterSpacing: "0.05em" }}
             >
-              Enviar mensaje
+              {formStatus === "loading" ? "Enviando..." : "Enviar mensaje"}
               <ArrowRightIcon className="h-3 w-2" />
             </button>
+            <div aria-live="polite" className="text-[10px] uppercase tracking-[0.05em]">
+              {formStatus === "success" && (
+                <span className="text-[#00d4ff]">Mensaje enviado. Te respondo pronto.</span>
+              )}
+              {formStatus === "error" && (
+                <span className="text-red-400">{formError}</span>
+              )}
+            </div>
           </div>
         </form>
 
@@ -270,9 +318,6 @@ export function ContactSection() {
               { icon: FacebookIcon, label: "Facebook", href: "https://facebook.com/dr.paruzzo" },
               { icon: RedditIcon, label: "Reddit", href: "https://reddit.com/user/dr_paruzzo" },
               { icon: ThreadsIcon, label: "Threads", href: "https://threads.net/@dr.paruzzo" },
-              { icon: LineIcon, label: "Line", href: "#" },
-              { icon: KakaoIcon, label: "KakaoTalk", href: "#" },
-              { icon: WeChatIcon, label: "WeChat", href: "#" },
             ].map((social) => (
               <a
                 key={social.label}

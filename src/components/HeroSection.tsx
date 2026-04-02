@@ -14,7 +14,7 @@ export function HeroSection() {
   const subHeroHeadingRef = useRef<HTMLHeadingElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const rockVideoRef = useRef<HTMLVideoElement>(null);
+  const brainRef = useRef<HTMLDivElement>(null);
   const blobBottomRef = useRef<HTMLDivElement>(null);
   const blobTopRef = useRef<HTMLDivElement>(null);
   const blobCenterRef = useRef<HTMLDivElement>(null);
@@ -23,7 +23,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* ─── Hero title entrance: "CUBE STUDIO" ─── */
+      /* ─── Hero title entrance: "DR. PARUZZO" ─── */
       if (heroTitleRef.current) {
         const titleSplit = new SplitType(heroTitleRef.current, {
           types: "chars",
@@ -71,11 +71,12 @@ export function HeroSection() {
         },
       });
 
-      /* ─── Rock video parallax ─── */
-      if (rockVideoRef.current) {
-        gsap.to(rockVideoRef.current, {
+      /* ─── Brain image parallax + floating ─── */
+      if (brainRef.current) {
+        // Scroll parallax
+        gsap.to(brainRef.current, {
           y: -250,
-          rotation: 18,
+          rotation: 12,
           scale: 0.8,
           scrollTrigger: {
             trigger: heroContentRef.current,
@@ -83,6 +84,24 @@ export function HeroSection() {
             end: "bottom top",
             scrub: true,
           },
+        });
+
+        // Floating animation (loop)
+        gsap.to(brainRef.current, {
+          y: "+=15",
+          duration: 3,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+
+        // Pulse glow (loop)
+        gsap.to(brainRef.current, {
+          filter: "drop-shadow(0 0 40px rgba(0,212,255,0.5))",
+          duration: 2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
         });
       }
 
@@ -172,7 +191,7 @@ export function HeroSection() {
         {/* Hero background image */}
         <div className="hero-bg-image absolute inset-0">
           <Image
-            src="/images/hero-image.webp"
+            src="/images/dr-paruzzo-banner-1.webp"
             alt="Dr. Paruzzo — Donde convergen cuerpo, mente y tecnología"
             fill
             priority
@@ -181,21 +200,23 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
         </div>
 
-        {/* 3D Rock/Crystal video element */}
-        <video
-          ref={rockVideoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/images/stone-hero.webp"
+        {/* Brain neuro image — floating + glow */}
+        <div
+          ref={brainRef}
           className="absolute left-1/2 top-[55%] z-[5] w-[35vw] max-w-[500px] -translate-x-1/2 -translate-y-1/2"
-          style={{ mixBlendMode: "screen" }}
+          style={{ mixBlendMode: "screen", filter: "drop-shadow(0 0 20px rgba(0,212,255,0.3))" }}
         >
-          <source src="/videos/hero-rock.webm" type="video/webm" />
-        </video>
+          <Image
+            src="/images/dr-paruzzo-brain.webp"
+            alt="Neurociencia e Inteligencia Artificial"
+            width={500}
+            height={500}
+            className="h-auto w-full"
+            priority
+          />
+        </div>
 
-        {/* Heading: CUBE STUDIO — entrance animation via SplitType */}
+        {/* Heading: DR. PARUZZO — entrance animation via SplitType */}
         <div className="relative z-10 flex h-full flex-col items-center justify-center">
           <h1
             ref={heroTitleRef}

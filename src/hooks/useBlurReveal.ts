@@ -32,7 +32,7 @@ interface BlurRevealOptions {
 
 /**
  * Hook that applies SplitType + GSAP blur-in reveal on scroll.
- * Matches the original Naya Studio animation pattern.
+ * SplitType + GSAP blur-in reveal animation pattern.
  */
 export function useBlurReveal<T extends HTMLElement>(
   options: BlurRevealOptions = {},

@@ -133,7 +133,7 @@ export function BenefitsSection() {
         aria-hidden="true"
       />
 
-      {/* Background ambient glow (replaces floral video) */}
+      {/* Background ambient glow */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.08]"
         style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.15) 0%, transparent 40%, rgba(200,149,62,0.1) 80%, transparent 100%)" }}

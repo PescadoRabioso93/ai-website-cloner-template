@@ -128,22 +128,14 @@ export function ReviewsSection() {
                     {testimonial.role}
                   </span>
 
-                  {/* Author image with border overlay */}
+                  {/* Author image */}
                   <div className="relative w-[120px] h-[120px] mt-4">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
                       width={120}
                       height={120}
-                      className="rounded-full object-cover w-full h-full"
-                    />
-                    <Image
-                      src="/images/author-border.webp"
-                      alt=""
-                      width={140}
-                      height={140}
-                      className="absolute -inset-[10px] w-[140px] h-[140px] pointer-events-none"
-                      aria-hidden="true"
+                      className="rounded-full object-cover w-full h-full ring-1 ring-[#00d4ff]/20"
                     />
                   </div>
                 </div>

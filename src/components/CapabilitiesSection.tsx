@@ -186,7 +186,7 @@ export function CapabilitiesSection() {
       <div ref={(el) => { blobRefs.current[2] = el; }} className="pointer-events-none absolute bottom-[5%] left-1/4 h-[1600px] w-[1000px] rounded-full opacity-50" style={{ background: "radial-gradient(circle, rgba(0,212,255,0.25) 0%, transparent 70%)", filter: "blur(50px)" }} aria-hidden="true" />
       <div ref={(el) => { blobRefs.current[3] = el; }} className="pointer-events-none absolute right-1/4 top-[60%] h-[1200px] w-[800px] rounded-full opacity-40" style={{ background: "radial-gradient(circle, rgba(200,149,62,0.2) 0%, transparent 70%)", filter: "blur(60px)" }} aria-hidden="true" />
 
-      {/* Background ambient glow (replaces floral video) */}
+      {/* Background ambient glow */}
       <div
         className="pointer-events-none absolute top-[20%] left-1/2 z-0 h-[800px] w-full max-w-[1000px] -translate-x-1/2 rounded-full opacity-10"
         style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.2) 0%, rgba(200,149,62,0.1) 50%, transparent 80%)", filter: "blur(80px)" }}

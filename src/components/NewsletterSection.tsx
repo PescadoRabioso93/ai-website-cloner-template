@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function NewsletterSection() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -117,13 +118,14 @@ export function NewsletterSection() {
         {/* Email form */}
         <form
           ref={formRef}
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
           className="mx-auto mt-12 flex max-w-[500px] flex-col items-center gap-4 sm:flex-row"
         >
           <input
             type="email"
             name="email"
             placeholder="Tu e-mail"
+            aria-label="Email para newsletter"
             className="input-field flex-1 text-center sm:text-left"
             autoComplete="email"
             required
@@ -138,10 +140,18 @@ export function NewsletterSection() {
           </button>
         </form>
 
-        {/* Trust line */}
-        <p className="mt-6 text-[9px] uppercase tracking-[0.08em] text-white/30">
-          Gratis · Sin spam · Cancelá cuando quieras
-        </p>
+        {/* Trust line / feedback */}
+        <div className="mt-6" aria-live="polite">
+          {submitted ? (
+            <p className="text-[10px] uppercase tracking-[0.08em] text-[#00d4ff]">
+              Próximamente — mientras tanto, seguime en redes
+            </p>
+          ) : (
+            <p className="text-[9px] uppercase tracking-[0.08em] text-white/30">
+              Gratis · Sin spam · Cancelá cuando quieras
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
